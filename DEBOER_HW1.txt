@@ -1,0 +1,198 @@
+DEBOER, Jon
+Homework 1 - Linux Refresh
+In this homework I will be asking you to review the purpose of the shell and how it works, common shell commands and demonstrate scripting skills.
+You will need this file Hutia_DNA.fasta
+General concepts to refresh and lessons to review if you need them:
+Shell Commands
+Working with Files and Directories
+Pipes and Filters
+Loops
+Shell Scripts
+Documentation -specifically in-line-comments
+Remember these Common commands as you work through this exercise
+ls          mkdir           cd          pwd
+cp          mv              rm          rmdir 		
+cat         less            head        tail
+grep        wc              uniq        top
+man         sort            wc          * 
+ |          .               ..          /
+Part I: Questions
+1.	What is a Graphical User Interface (GUI) and how does that differ from the Command Line Interface (CLI)?
+#A GUI is an interface for a program that is more user friendly to less tech savy people. CLI is a line based interface, more oldschool (I guess is it though?), where you have to type everything. 
+#Examples, on a GUI you can click buttons to run functions/ commands while on a CLI you would have to type in the function/ commands. 
+
+2.	What does the shell do?
+#A shell allows you to perform everything you can on a computer using a mouse and keyboard, but also much more and can be quicker! 
+
+3.	What is the command used for listing things in a directory?
+#ls = list
+
+4.	What is the command used for changing directories?
+#cd = change directory
+
+5.	What command would you use to get your current working directory?
+#pwd = print working directory
+
+6.	How do you get the manual for these commands?
+#man XYZ = manual then command
+
+7.	What does the shell prompt look like?
+#Not entirely sure what is being asked. I am assuming its the blinking "$" symbol, meaning terminal is ready for a command.
+
+8.	How would you list things in a directory in chronological order?
+#type in the following command
+#ls -t (sort by time most recently modified)
+
+9.	Name two ways to get to the ‘home’ or ‘root’ directory.
+#to access the home you can use a "~" or a using a lot of "../" at the beginning of path.
+#you can easily change to the root directory by using cd with a space. "cd  "
+
+10.	What is the difference between an absolute path and a relative path?
+#absolute path is the entire path from the home directory, relative path is from where you currently are in your directories
+
+11.	What are the two relative path directories we talked about and what do they mean? 
+#. and ..
+
+12.	Why shouldn’t you put spaces in filenames?
+#Because it can be confusing for calling the file name in terminal where you must use a backslash otherwise it may think the file is multiple arguments.
+
+13.	Name a way to have multiple readable words in a filename without spaces?
+#Underscores, periods, dashes, Camel
+#I exclusively use Underscores
+
+14.	What is the program nano, what does it do? Do you use nano? If not what do you use?
+#Nano is text editing program. 
+#Apparently I now use BBEDIT.
+
+15.	* is a form of a wildcard. What does it mean?
+#match anything that follows the symbol
+
+16.	The following code would match what? ls *.txt
+#this will match anything that has a something then ".txt". 
+
+17.	Why do we need to be careful with the mv command?
+#because it can potentially delete files! Specifically it is easy to save over files.
+
+18.	Why do we need to be careful with the rm command?
+#because it totally deletes things! It does not go to the trash, but immediately removed from your computer
+
+19.	What is the difference between > and >>?
+#> is redirect output and >> appends output
+
+20.	What does head do?
+#head "display first lines of a file" - as stated. It can really display whatever lines you want depending on the arguments
+
+21.	What is the purpose of | (pipe)?
+#Puts the output of a command/ function into another command/ function
+
+22.	Interpret the following command:
+#cat huge_file.fasta | uniq | head -n 5 >proteins.fasta
+
+#this line concatenates the "huge.file.fasta" and pipes it into the command uniq which should reduce duplicates and then is piped into the head command.
+#The head command is only taking the first 5 lines and then the results are placed into a file called "proteins.fasta"
+
+23.	What is a loop and when would you use it?
+#a loop is used to iterate through a list.
+
+24.	In a directory with the following files. What would the following loop do? apple.txt, banana.txt, orange.txt $ for filename in *.txt; do > cat ${filename} >>fruits.txt > done
+#it concatenates all the names of all files that end with ".txt" then appends the names to the fruits.txt file.
+
+25.	What is a shell script?
+#A program that runs from a script on the shell, such as terminal (.sh at the end of the script)
+
+26.	What are the benefits of writing and running a script over typing the code in?
+#You are able to save the script so you can use it in the future or easily share your script.
+#It is also easier to edit and re-run if you are trouble shooting.
+
+27.	When looking at a script what does # mean? Why would you use one?
+# # = hashtag/ pound sign. The symbol denotes a note in a script, which will not be read by the program. Extremely useful for annotating your code.
+
+28.	What does grep stand for and what does it do?
+#grep stands for "Globally search for a Regular Expression and Print matching lines"
+#The function searches text for anything that matches the inputted expression, essentially used like find.
+
+29.	What does find do?
+# find "walk a file hierarchy" - basically locates files based on what you type in. you can use your tab button to autofill.
+
+
+#Part II - Writing Code
+#As part of this exercise please open the shell and practice moving around into different files. Best practice is to try a little bit every day. Try to challenge yourself by not using the mouse. For each of the questions below type your code and the result from the shell prompt.
+1.	Open the shell and change directories to the desktop and list the contents, paste your code here.
+
+$cd Desktop/
+$ls
+
+2.	Draw the file structure from the root directory into one of the folders on the desktop. You can submit a pdf with a drawing. 
+Select three locations and type the commands for changing directories to those locations use a combination of absolute and relative paths.
+#see attached for PDF!
+  #bioinformatics homework file
+$cd /Desktop/Bioinformatics/HW 
+  #now get to Dissertation Chapter 2 files
+$cd ../../Dissertation/CH_2
+  #now get to downloads because there are files there to dig through
+$cd /Downloads
+
+3.	On your computer create a directory on your desktop. Create two files without opening them that have file extensions .txt. 
+Then use wildcards to list the files in that directory. Paste you code here.
+
+$pwd                   #I am on the desktop!
+$mkdir Bioinfo_spr_2021/
+$cd Bioinfo_spr_2021/  #now in newly created Bioinformatics class folder
+$touch heaven.txt      #make file 1 without opening
+$touch earth.txt       #make file 2 without opening
+$ls *.txt              #list all the .txt files
+
+4.	Download the file Hutia_DNA.fasta from the Github repo. Make a new directory on the desktop. Move the file into that directory. 
+List the contents of the directory. How many lines are in this file? Fasta files are a type of data file that holds DNA sequences. They are all formatted the same. 
+
+The first line starts with a > and a name followed by a line break, and then DNA sequence followed by a line break. 
+The next line starts with an > and another name followed by a line break and the DNA sequence. 
+With that in mind, how could you use linux commands to determine how many sequences are in this file? How many sequences are in this file?
+
+$mkdir HW1/                        #make new directory
+$cd HW1/                           #change to that new directory
+$mv /Downloads$Hutia_DNA.fasta .   #mv downloaded file to current directory (.)
+$ls #lists contents                #list contents of current directory, make sure file was moved
+$wc -l Hutia_DNA.fasta             #use the function Word Count. The "-l" makes it so it counts the lines. The answer is 2382004
+$grep -c ">" Huntia_DNA.fasta      #use grep to find ">", but then use "-c" to count. The answer is 1191002 (which should be half of the number of lines)
+
+
+5.	Build a single line of code that would take the first 100 sequences of this file and put them in a new file called ‘MyOutputFile.fasta’. 
+Use a combination of wc, sort and uniq in a single line of code to tell me how many unique lines are in this file. Paste your commands and the answer here.
+$head -n200 Hutia_DNA.fasta > MyOutputFile.fasta  #pushes out the first 200 lines of Hutia_DNA.fasta (200 because the file is structured 2 lines per sequence as mentioned earlier) into a new file called MyOutputFile.fasta
+#using wc, sort, uniq to identify unique lines
+$ uniq MyOutputFile.fasta  | wc -l  | sort -o how_many_lines.txt #not sure why sort is needed, could use sort to output the results with "sort -o".
+
+
+
+6.	Write code that would create a loop to copy all the files in one directory ending in .txt to another directory. Paste the code here.
+$pwd                #/Users/jonathandeboer727/Desktop/Bio_in_Spr_21/homework/HW_1
+$mkdir Transfer/    #make a new directory to cp files to
+$for i in *.txt     #make the for loop with cp function
+$do cp $i Transfer/
+$done
+$ls					#check to see if your .txt files are still in first directory.
+$ls Transfer/       #check to see if all the .txt files were copied over.
+
+
+7.	Write a script with in-line documentation (hint #) that would run a program called find_taxa.py on a set of files ending in ‘.fasta’. 
+What is the name of your script? Type the script here.
+
+name of script: bash_the_taxa.sh
+
+#################################
+#### Print First Line Script ####
+#################################
+#by Jon DeBoer
+#Date: 1/31/2021
+
+#Usage: sh bash_the_taxa.sh 
+
+!#/usr/bin/bash
+for file in *.fasta           #start for loop on fasta files in the current directory
+do python find_taxa.py $file  #a Mysterious python script that takes the taxon out from fasta files. Here we are iterating through the fasta files and running them through the find_taxa.py script.
+done
+
+
+8.	From the Hutia_DNA.fasta file tell me how on how many lines do we find the pattern ‘GAGA’. What was the code used to find this?
+grep -c 'GAGA' Hutia_DNA.fasta #Answer is 304806
